@@ -1,13 +1,17 @@
 {% extends 'template.html' %}
 
 {% block content %}
-<h1>Posts</h1>
+<h1>Articles</h1>
 <ul>
-    {%for post in object_list %}
-    <li><a href="{% url 'article_details' post.pk %}">{{ post.title }}</a> -
-        {{ post.author }} - {{ post.created_date }} - {{ post.category }}<br>
+    {% for article in article_list %}
+    <li><a href="#">{{ article.title }}</a> -
+        {{ article.author }} - {{ article.created_date }} -<br>
+        {% for category in article.category.all %}
+        Categories: (this will not be in here){{ category.name }}<br>
+            {% endfor %}
 
-        {{ post.body | truncatechars:50 }}</li>
+        {{ article.content | truncatechars:50}}
+    </li>
 
     {%endfor%}
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+</head>
+<body>
+    <h1>Blog Kategorileri</h1>
+    <ul>
+        {% for category in category_list %}
+            <li>{{ category.name }}</li>
+        {% empty %}
+            <li>Henüz kategori yok.</li>
+        {% endfor %}
+    </ul>
+
+    <h1>Blog Makaleleri</h1>
+    <ul>
+        {% for article in article_list %}
+            <li>{{ article.title }} - {{ article.author }} -
+                {% for category in article.category.all %}
+                    {{ category.name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </li>
+        {% empty %}
+            <li>Henüz makale yok.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

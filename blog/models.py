@@ -17,3 +17,6 @@ class Article(models.Model):
     category = models.ManyToManyField(Category)
     created_date = models.DateField(auto_now_add=True)
     content = models.TextField()
+
+    def __str__(self):
+        return self.title + " " + str(self.author)
