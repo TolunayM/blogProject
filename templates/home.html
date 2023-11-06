@@ -1,0 +1,16 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<h1>Posts</h1>
+<ul>
+    {%for post in object_list %}
+    <li><a href="{% url 'article_details' post.pk %}">{{ post.title }}</a> -
+        {{ post.author }} - {{ post.created_date }} - {{ post.category }}<br>
+
+        {{ post.body | truncatechars:50 }}</li>
+
+    {%endfor%}
+
+</ul>
+
+{% endblock %}
