@@ -15,7 +15,7 @@ class Article(models.Model):
     title = models.CharField(max_length=50)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ManyToManyField(Category)
-    created_date = models.DateField(auto_now_add=True)
+    created_date = models.DateField()
     content = models.TextField()
 
     def __str__(self):

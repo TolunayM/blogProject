@@ -1,0 +1,28 @@
+{% extends 'template.html' %}
+{% block title %} {{ article.title}} {% endblock %}
+
+{% block content %}
+
+
+
+<h1>{{ article.title }} </h1>
+
+{% if user.is_authenticated %}
+
+{% if object.author == user or user.is_superuser %}
+<h6><a href="" class="btn btn-outline-secondary">Edit</a></h6>
+<h6><a href="" class="btn btn-outline-secondary" >Delete</a></h6>
+
+{% endif %}
+{% endif %}
+
+
+<small>{{ article.author }} - {{ article.created_date }}</small>
+</br>
+<hr>
+{{ article.content }}
+
+<br/></br>
+<a href="{% url 'home' %}" class="btn btn-outline-secondary">Back</a>
+
+{% endblock %}

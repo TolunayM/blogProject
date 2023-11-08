@@ -23,11 +23,10 @@
                 {% endfor %}
                 <br>
             <br>
-                <p>{{ article.content |truncatewords:50 }}</p>
+                <p>{{ article.content | truncatewords:50 }}</p>
 
 
             </div>
-
 
         {% empty %}
             <li>There is No Article Yet</li>

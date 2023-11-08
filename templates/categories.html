@@ -1,20 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'template.html' %}
+
+{% block content %}
+
 <head>
-    <meta charset="UTF-8">
     <title>Blog</title>
 </head>
 <body>
-    <h1>Blog Kategorileri</h1>
+    <h1>All Categories</h1>
     <ul>
         {% for category in category_list %}
-            <li>{{ category.name }}</li>
+            <a href="{% url 'categories' category.name %}"><li>{{ category.name }}</li></a>
         {% empty %}
-            <li>Henüz kategori yok.</li>
+            <li>There is no category yet.</li>
         {% endfor %}
     </ul>
 
-    <h1>Blog Makaleleri</h1>
+    <h1>All Articles</h1>
     <ul>
         {% for article in article_list %}
             <li>{{ article.title }} - {{ article.author }} -
@@ -23,8 +24,10 @@
                 {% endfor %}
             </li>
         {% empty %}
-            <li>Henüz makale yok.</li>
+            <li>There is no Article yet.</li>
         {% endfor %}
     </ul>
 </body>
-</html>
+
+
+{% endblock %}
