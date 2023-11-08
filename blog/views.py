@@ -11,7 +11,7 @@ class HomeView(ListView):
     articles_per_page = 3
 
     def get(self, request, *args, **kwargs):
-        article_list = Article.objects.all()
+        article_list = Article.objects.filter(is_active=True)
         paginator = Paginator(article_list, self.articles_per_page)
         page_number = request.GET.get('page')
         page = paginator.get_page(page_number)
@@ -32,13 +32,13 @@ class ArticleView(DetailView):
 def category_view(request):
 
     category_list = Category.objects.all()
-    article_list = Article.objects.all()
+    article_list = Article.objects.filter(is_active=True)
     return render(request, 'categories.html', {'category_list': category_list, 'article_list': article_list})
 
 
 def CategoryView(request, categories):
 
-    category_query = Article.objects.filter(category__name=categories)
+    category_query = Article.objects.filter(category__name=categories, is_active=True)
     paginator = Paginator(category_query, 3)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)

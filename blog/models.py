@@ -17,6 +17,7 @@ class Article(models.Model):
     category = models.ManyToManyField(Category)
     created_date = models.DateField()
     content = models.TextField()
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title + " " + str(self.author)
