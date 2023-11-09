@@ -1,6 +1,32 @@
 {% extends 'template.html' %}
 
 {% block content %}
+
+
+   <div class="card"
+
+            style="border: 1px solid #ccc;
+            padding: 50px; margin: 1px 500px; left: 600px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);">
+                <p>
+                    <br>
+                <h2><a href="{% url 'article_details' last_article.pk %}">{{ last_article.title|title }}</a><br></h2>
+
+                Author: {{ last_article.author }}<br>
+                Article ID: {{ last_article.id  }}
+                <small>Posted {{ last_article.created_date|timesince }} ago - {{ last_article.created_date }}</small>
+                - Categories:
+                {% for category in last_article.category.all %}
+                    {{ category.name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                <br>
+            <br>
+                <p>{{ last_article.content |truncatewords:50 }}</p>
+
+
+            </div>
+
     <h1>Articles</h1>
     <ul>
         {% for article in page %}
@@ -8,14 +34,15 @@
             <div class="card"
 
             style="border: 1px solid #ccc;
-            padding: 20px; margin: 20px 0;
+            padding: 20px; margin: 50px 120px;
             font-family: Arial, sans-serif;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);">
                 <p>
                     <br>
                 <h2><a href="{% url 'article_details' article.pk %}">{{ article.title|title }}</a><br></h2>
 
-                Author: {{ article.author }}
+                Author: {{ article.author }}<br>
+                Article ID: {{ article.id  }}
                 <small>Posted {{ article.created_date|timesince }} ago - {{ article.created_date }}</small>
                 - Categories:
                 {% for category in article.category.all %}

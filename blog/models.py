@@ -17,6 +17,7 @@ class Article(models.Model):
     category = models.ManyToManyField(Category)
     created_date = models.DateField()
     content = models.TextField()
+    image = models.ImageField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
