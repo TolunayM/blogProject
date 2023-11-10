@@ -20,9 +20,10 @@
 <small>{{ article.author }} - {{ article.created_date }}</small>
 </br>
 <hr>
+    <img src="{{ article.image.url }}" alt="Image for article"><hr>
 {{ article.content }}
 
-<br/></br>
-<a href="{% url 'home' %}" class="btn btn-outline-secondary">Back</a>
+<br/>
+    <a href="{% url 'home' %}" class="btn btn-outline-secondary">Back</a>
 
 {% endblock %}

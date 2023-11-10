@@ -23,13 +23,14 @@ class HomeView(ListView):
         with open(log_file, "r") as file:
             log_data = file.read()
 
+        last_read = 13
         lines = log_data.split("\n")
         for line in lines:
             if line and line[-1].isdigit():
                 last_read = line.split("/")[-1]
         last_article = Article.objects.get(id=last_read)
 
-        context = {'page': page, 'last_read': last_read,'last_article': last_article}
+        context = {'page': page, 'last_read': last_read, 'last_article': last_article}
         return render(request, self.template_name, context)
 
 

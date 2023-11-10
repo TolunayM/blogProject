@@ -2,15 +2,20 @@
 
 {% block content %}
 
-
+{#            style="border: 1px solid #ccc;#}
+{#            padding: 50px; margin: 1px 500px; left: 600px;#}
+{#            font-family: Arial, sans-serif;#}
+{#            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);">#}
    <div class="card"
 
-            style="border: 1px solid #ccc;
-            padding: 50px; margin: 1px 500px; left: 600px;
+          style="border: 1px solid #ccc;
+            padding: 20px; margin: 50px 120px;
             font-family: Arial, sans-serif;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);">
+    <h1> Last Article Read on Blog</h1>
                 <p>
                     <br>
+   <img src="{{ last_article.image.url }}" alt="Image for article" style="max-height: 30%; max-width: 30%">
                 <h2><a href="{% url 'article_details' last_article.pk %}">{{ last_article.title|title }}</a><br></h2>
 
                 Author: {{ last_article.author }}<br>
@@ -27,7 +32,7 @@
 
             </div>
 
-    <h1>Articles</h1>
+    <h1>All Articles</h1>
     <ul>
         {% for article in page %}
 
@@ -39,6 +44,7 @@
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);">
                 <p>
                     <br>
+            <img src="{{ article.image.url }}" alt="Image for article" style="max-height: 30%; max-width: 30%">
                 <h2><a href="{% url 'article_details' article.pk %}">{{ article.title|title }}</a><br></h2>
 
                 Author: {{ article.author }}<br>
@@ -50,6 +56,7 @@
                 {% endfor %}
                 <br>
             <br>
+
                 <p>{{ article.content |truncatewords:50 }}</p>
 
 
